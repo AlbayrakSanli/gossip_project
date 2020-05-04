@@ -1,0 +1,11 @@
+<h1>La page Team</h1>
+
+<% @teams.each do |team| %>
+  <br>
+  <p>
+      Membre N°<%= team.id %>: <%= team.last_name + " " + team.first_name %><br>
+      Age: <%= team.age %><br>
+      compétence: <%= team.competence %><br>
+      Goût préféré: <%= team.taste %><br>
+  </p>
+  <% end %>

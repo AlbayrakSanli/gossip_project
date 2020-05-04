@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row justify-content-md-center">
+    <h1>Voici tous les potins.</h1>
+  </div>
+  <div class="row justify-content-md-center mb-5">
+    <%= form_tag "/", method: "post" do %>
+      <input type="text" name="author" />
+      <input type="text" name="content" />
+      <input type="submit" value="Ajouter un potin" />
+    <% end %>
+  </div>
+</div>
+
+<div class="container">
+  <div class="card-deck">
+  <div class="row">
+    <% @gossips.each_with_index do |gossip, index| %>
+      <div class="card border-primary mb-5 col-lg-6" style="max-width: 18rem;">
+        <div class="card-header"><%= gossip.title %></div>
+        <div class="card-body text-primary">
+          <h5 class="card-title"><%= gossip.author %></h5>
+          <a href="/gossip/<%= index+1 %>" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="card-deck">
+  <div class="card">
+    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div>
+  </div>
+</div>
