@@ -1,0 +1,11 @@
+<div class="text-center">
+    <%= form_tag "/session/", method: "post" do %>
+      <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+      <h1 class="h3 mb-3 font-weight-normal">Se connecter</h1>
+      
+      <input type="text" name="email" placeholder="Email address" />
+      <input type="text" name="password" placeholder="Password" />
+      <br><br>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Se connecter</button>
+    <% end %>
+</div>

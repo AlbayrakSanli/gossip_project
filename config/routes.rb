@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-  root 'gossip#index'
-  post '/' => "gossip#create"
-  get 'gossip/:id' => 'gossip#show'
- 
-  get '/team' => "team#equipe"
-  get '/contact' => "team#contact"
+  resources :gossip do
+    resources :new
+  end
+  resources :team, only: [:show, :index]
+  resources :user
+  resources :city, only: [:show]
+  resources :session, only: [:new, :create, :destroy]
+  get "/session/profile"
 
-  get "welcome/:first_name" => "gossip#landing"
+  get '/contact' => "team#contact"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

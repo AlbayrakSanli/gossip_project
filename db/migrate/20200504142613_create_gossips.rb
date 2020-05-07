@@ -4,6 +4,7 @@ class CreateGossips < ActiveRecord::Migration[6.0]
       t.string :title
       t.string :author
       t.string :content
+      t.string :city
 
       t.timestamps
     end

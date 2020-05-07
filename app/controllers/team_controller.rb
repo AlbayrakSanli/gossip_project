@@ -1,8 +1,9 @@
 class TeamController < ApplicationController
-  def equipe
-    @teams = Team.all
+  def index
+    @many_people = Team.all
   end
 
-  def contact
+  def show
+    @one_people = Team.find(params[:id])
   end
 end

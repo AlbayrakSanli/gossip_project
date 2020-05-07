@@ -2,5 +2,15 @@
 
 <p>
     Auteur: <%= @un_gossip.author %><br>
-    Contenu: <%= @un_gossip.content %>  
+    Contenu: <%= @un_gossip.content %><br>
+
+    <% if session[:user_id] %>
+        <% if current_user.first_name == @un_gossip.author %>
+            <a type="bouton" class="btn btn-primary" href= "<%= edit_gossip_path %>">Editer</a>
+            <%= form_tag "/gossip/#{@un_gossip.id}", method: "delete" do %>
+                <input type="submit" value="Supprimer le potin" />
+            <% end %>
+        <% end %>
+    <% end %>
 </p>
+ 

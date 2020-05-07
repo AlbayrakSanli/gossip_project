@@ -1,0 +1,27 @@
+<div class="container">
+  <h1 class="display-4 text-center my-3">les Potins de la vill de <% @city.name %></h1>
+
+  <div class="row">
+    <% @gossips.each do |gossip| %>
+      <% if gossip.city == @city.name %>
+        <div class="col-4 mb-3">
+          <div class="card">
+            <img class="card-img-top" alt="Card image cap" src="http://www.leparisien.fr/resizer/kqRQjiAtXLsRwyjLMPBrcxGxr9k=/932x582/arc-anglerfish-eu-central-1-prod-leparisien.s3.amazonaws.com/public/IRGRVPHIVZQM3M4EPI6AK6MTBA.jpg">
+            <div class="card-body">
+              <h5 class="card-title"><%=gossip.title %></h5>
+              <p class="card-text"><%= gossip.content %></p>
+              <p class="card-text"><%= gossip.city %></p>
+              <p class="card-text">
+                <small class="text-muted">
+                  posté par <%=gossip.author %>
+                  le <%=gossip.created_at.strftime("%d/%m/%Y %H:%I") %>
+                  </small>
+                </p>
+                <a type="button" class="btn btn-primary btn-block" href="<%=gossip_path(gossip.id) %>">Voir le potin</a>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

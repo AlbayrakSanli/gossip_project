@@ -1,0 +1,27 @@
+<div class="container">
+  <h1 class="display-4 text-center my-3">La Team dérrière la création du site</h1>
+
+  <div class="row">
+    <% @many_people.each do |people| %>
+      <div class="col-4 mb-3">
+        <div class="card">
+          <img class="card-img-top" alt="Card image cap" src="http://www.leparisien.fr/resizer/kqRQjiAtXLsRwyjLMPBrcxGxr9k=/932x582/arc-anglerfish-eu-central-1-prod-leparisien.s3.amazonaws.com/public/IRGRVPHIVZQM3M4EPI6AK6MTBA.jpg">
+          <div class="card-body">
+            <h5 class="card-title">
+              Membre N°<%= people.id %>:
+              <%= people.last_name + " " + people.first_name %>
+            </h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Age: <%= people.age %></li>
+            <li class="list-group-item">compétence: <%= people.competence %></li>
+            <li class="list-group-item">Goût préféré: <%= people.taste %></li>
+          </ul>
+          <div class="card-body">
+            <a type="button" class="btn btn-primary btn-block" href="<%=team_path(people.id)%>">Voir la page du membre</a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="text-center">
+    <%= form_tag "/user/", method: "post" do %>
+      <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+      <h1 class="h3 mb-3 font-weight-normal">Inscription</h1>
+
+      <input type="text" name="first_name" placeholder="Nom" />
+      <input type="text" name="last_name" placeholder="Prénom" />
+      <br><br>
+      <input type="text" name="description" placeholder="description" />
+      <br><br>
+      <input type="text" name="age" placeholder="Age" />
+      <input type="text" name="city" placeholder="Ville" />
+      <br><br>
+      <input type="text" name="email" placeholder="Email address" />
+      <input type="text" name="password" placeholder="Password" />
+      <br><br>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Inscription</button>
+    <% end %>
+</div>

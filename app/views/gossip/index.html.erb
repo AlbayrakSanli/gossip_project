@@ -1,60 +1,29 @@
 <div class="container">
-  <div class="row justify-content-md-center">
-    <h1>Voici tous les potins.</h1>
-  </div>
-  <div class="row justify-content-md-center mb-5">
-    <%= form_tag "/", method: "post" do %>
-      <input type="text" name="author" />
-      <input type="text" name="content" />
-      <input type="submit" value="Ajouter un potin" />
-    <% end %>
-  </div>
-</div>
+  <h1 class="display-4 text-center my-3">Potin Party</h1>
 
-<div class="container">
-  <div class="card-deck">
+  <div class="row justify-content-md-center mb-4">
+    <a type="button" class="btn btn-primary " href="<%= new_gossip_path %>">Ajouter un nouveau potin</a>
+  </div>
+
   <div class="row">
-    <% @gossips.each_with_index do |gossip, index| %>
-      <div class="card border-primary mb-5 col-lg-6" style="max-width: 18rem;">
-        <div class="card-header"><%= gossip.title %></div>
-        <div class="card-body text-primary">
-          <h5 class="card-title"><%= gossip.author %></h5>
-          <a href="/gossip/<%= index+1 %>" class="btn btn-primary">Go somewhere</a>
+    <% @gossips.each do |gossip| %>
+      <div class="col-4 mb-3">
+        <div class="card">
+          <img class="card-img-top" alt="Card image cap" src="http://www.leparisien.fr/resizer/kqRQjiAtXLsRwyjLMPBrcxGxr9k=/932x582/arc-anglerfish-eu-central-1-prod-leparisien.s3.amazonaws.com/public/IRGRVPHIVZQM3M4EPI6AK6MTBA.jpg">
+          <div class="card-body">
+            <h5 class="card-title"><%=gossip.title %></h5>
+            <p class="card-text"><%= gossip.content %></p>
+            <p class="card-text"><%= gossip.city %></p>
+            <p class="card-text">
+              <small class="text-muted">
+                posté par <%=gossip.author %>
+                le <%=gossip.created_at.strftime("%d/%m/%Y %H:%I") %>
+                </small>
+              </p>
+              <a type="button" class="btn btn-primary btn-block" href="<%=gossip_path(gossip.id) %>">Voir le potin</a>
+          </div>
         </div>
       </div>
     <% end %>
-  </div>
-</div>
-
-<div class="card-deck">
-  <div class="card">
-    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-  </div>
-  <div class="card">
-    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-  </div>
-  <div class="card">
-    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
   </div>
 </div>

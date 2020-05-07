@@ -1,0 +1,13 @@
+<h1><%= @user.first_name %> <%= @user.last_name %></h1>
+
+<p>
+    Descripton: <%= @user.description %><br><br>
+    Email: <%= @user.email %><br>
+    Age: <%= @user.age %><br>
+    Ville: <a href= "/city/<%= @city.id %>" ><%= @user.city %></a>  
+
+    <a type="bouton" class="btn btn-primary" href= "<%= edit_user_path %>">Editer</a>
+    <%= form_tag "/user/#{@user.id}", method: "delete" do %>
+        <input type="submit" value="Supprimer le potin" />
+    <% end %>
+</p>

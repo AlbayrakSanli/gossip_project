@@ -1,0 +1,12 @@
+<div class="container">
+  <h1 class="display-4 text-center my-3">Créer un nouveau Potin</h1>
+
+  <div class="row justify-content-md-center mb-5">
+    <%= form_tag "/gossip", method: "post" do %>
+      <input type="text" name="title" placeholder="Titre du potin"/>
+      <input type="text" name="content" placeholder="Contenu du potin"/>
+      <input type="submit" value="Ajouter un potin" />
+    <% end %>
+  </div>
+</div> 
+

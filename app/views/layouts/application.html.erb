@@ -14,7 +14,7 @@
 
   <body>
     <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -23,7 +23,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="/gossip">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/team">Team</a>
@@ -32,13 +32,33 @@
           <a class="nav-link" href="/contact">Contact</a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+      
+        <form class="form-inline my-2 my-lg-0">
+          <% if session[:user_id] %>
+            <p type="button" class="btn btn-outline-primary my-2 my-sm-0" ><%= User.find(session[:user_id]).first_name %> <%= User.find(session[:user_id]).last_name %></p>
+            <%= link_to "Se déconnecter", session_path(session.id), method: :delete %>
+          <% else %>
+            <a type="button" class="btn btn-outline-primary my-2 my-sm-0" href="<%= new_user_path %>">S inscrire</a>
+            <a type="button" class="btn btn-outline-primary my-2 my-sm-0" href="<%= new_session_path %>">Se connecter</a>
+          <% end %>
+        </form>
+     
     </div>
   </nav>
     </header>
-    <%= yield %>
+    <div class="jumbotron">
+
+      <% flash.each do |name, msg| %>
+        <div class= 'alert alert-<%= name %>'>
+          <%= msg %>
+        </div>
+      <% end %>
+    
+      <%= yield %>
+    </div>
+
+    <footer class="container text-center">
+      <p class= "mt-5 mb-3 text-muted">© Albayrak Furkan 2020</p>
+    </footer>
   </body>
 </html>
